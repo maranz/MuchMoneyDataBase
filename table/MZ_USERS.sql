@@ -1,0 +1,22 @@
+/*
+ * Tabella utenti
+*/
+DROP TABLE IF EXISTS MZ_USERS;
+
+CREATE TABLE `MZ_USERS` (
+  `USERID` varchar(36) NOT NULL,
+  `USER` varchar(45) NOT NULL,
+  `PSW` varchar(45) DEFAULT NULL,
+  `LASTNAME` varchar(45) DEFAULT NULL,
+  `FIRSTNAME` varchar(45) DEFAULT NULL,
+  `IDATE` datetime DEFAULT NULL,
+  `UDATE` datetime DEFAULT NULL,
+  `CDATE` datetime DEFAULT NULL,
+  `DINI` datetime DEFAULT NULL,
+  `DFIN` datetime DEFAULT NULL,
+  `USERAPP` varchar(45) DEFAULT NULL,
+  `USERKEY` varchar(45) NOT NULL,
+  PRIMARY KEY (`USERID`)  
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
