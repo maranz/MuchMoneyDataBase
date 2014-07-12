@@ -1,6 +1,6 @@
 /*
  * Tabella dei soldi in entrata
- */ 
+*/
 DROP TABLE IF EXISTS MZ_MONEYOUT;
 
 CREATE TABLE `MZ_MONEYOUT` (

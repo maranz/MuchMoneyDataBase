@@ -1,6 +1,6 @@
 /*
  * Tabella legame Gruppi utentei
- */ 
+*/ 
 DROP TABLE IF EXISTS MZ_GROUPUSER;
 
 CREATE TABLE `MZ_GROUPUSER` (

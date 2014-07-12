@@ -1,3 +1,6 @@
+/*
+ * Tabella dei Voci di costo
+*/
 DROP TABLE IF EXISTS MZ_LOG;
 
 CREATE TABLE `MZ_LOG` (

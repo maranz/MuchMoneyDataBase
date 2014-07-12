@@ -1,6 +1,6 @@
 /*
  * Tabella Gruppi
- */ 
+*/ 
 DROP TABLE IF EXISTS MZ_GROUP;
 
 CREATE TABLE `MZ_GROUP` (
@@ -14,5 +14,3 @@ CREATE TABLE `MZ_GROUP` (
   `USERAPP` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`GROUPID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-

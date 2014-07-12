@@ -1,6 +1,6 @@
 /*
  * Tabella APP USER
- */  
+*/
 DROP TABLE IF EXISTS MZ_APPUSER;
 
 CREATE TABLE `MZ_APPUSER`(

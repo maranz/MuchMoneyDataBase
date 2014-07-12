@@ -1,7 +1,6 @@
 /*
  *  Tabella menu utente
- */
-
+*/
 DROP TABLE IF EXISTS MZ_MENUUSER;
 
 CREATE TABLE `MZ_MENUUSER`(

@@ -1,6 +1,6 @@
 /*
  * Tabella dei Voci di costo
- */ 
+*/
 DROP TABLE IF EXISTS MZ_ITEMCOST;
 
 CREATE TABLE `MZ_ITEMCOST` (
