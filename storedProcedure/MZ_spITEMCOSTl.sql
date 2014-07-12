@@ -10,14 +10,22 @@ BEGIN
 	/*
 	 * Implementare la gestione della data di validità 
 	*/		
+	SET @NAME = TRIM(IFNULL(NAME, ""));
 	SET @QRY = concat("select ITEMCOSTID, NAME from MZ_ITEMCOST where cdate is null and APPID = '", TRIM(IFNULL(APPID, "")) , "'");
-	if TRIM(IFNULL(NAME, "")) != "" then	
-		SET @QRY = concat(@QRY, " and NAME = '" , NAME, "'");
+	if @NAME != "" then	
+		SET @QRY = concat(@QRY, " and NAME = ?");
 	end if;
 	SET @QRY = concat(@QRY, " order by NAME");
 	PREPARE stmt FROM @QRY; 
-	EXECUTE stmt;
+
+	if @NAME != "" then	
+		EXECUTE stmt USING @NAME;
+	else
+		EXECUTE stmt;
+	end if;
+	
 	DEALLOCATE PREPARE stmt;
 
 END; //
 DELIMITER // 
+
