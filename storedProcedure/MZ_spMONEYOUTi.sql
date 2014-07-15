@@ -132,4 +132,5 @@ if ERR != "" then
 end if;
 # End format output messagge error
 
-END
+END; //
+DELIMITER // 

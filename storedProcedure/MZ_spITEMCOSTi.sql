@@ -10,7 +10,7 @@ CREATE PROCEDURE MZ_spITEMCOSTi(
 )
 BEGIN
 
--- Start control parameters
+#Start control parameters
 select "" into ERR;
 
 if TRIM(IFNULL(NAME, "")) = "" then 	
@@ -34,7 +34,7 @@ if ERR = "" then
 			   TODO: da gestire l'inserimento di una voce trovata ma non valida nel VDATE in linea
 			   se il caso si presenta ritornare un errore...
 		*/
-		--Se non trovo ITEMCOSTID inserisco la voce e mi ricavo ITEMCOSTID
+		#Se non trovo ITEMCOSTID inserisco la voce e mi ricavo ITEMCOSTID
 		if TRIM(IFNULL(ITEMCOSTID , "")) = "" then						
 			#select "DEBUG: before insert";
 			select UUID() into ITEMCOSTID;
@@ -69,7 +69,7 @@ if ERR = "" then
 	end if;
 end if;
 
--- Start format output messagge error
+#Start format output messagge error
 if ERR != "" then 	
 	select MZ_showERR(ERR) into ERR;
 end if;
