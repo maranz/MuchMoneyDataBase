@@ -1,8 +1,8 @@
 DROP PROCEDURE IF EXISTS MZ_spMONEYOUTi;
 
-DELIMITER $$
+DELIMITER //
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `MZ_spMONEYOUTi`(
+CREATE PROCEDURE MZ_spMONEYOUTi(
 	inout MONEYID varchar(36),
 	in USERID varchar(36),
 	in GROUPID varchar(36),	
@@ -133,4 +133,4 @@ end if;
 # End format output messagge error
 
 END; //
-DELIMITER // 
+DELIMITER //

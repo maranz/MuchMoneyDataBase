@@ -96,4 +96,4 @@ BEGIN
 	drop table tmpLog;	
 
 END; //
-DELIMITER ;
+DELIMITER //

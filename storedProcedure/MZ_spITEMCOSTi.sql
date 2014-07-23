@@ -76,4 +76,4 @@ end if;
 # End format output messagge error
 
 END; //
-DELIMITER ;
+DELIMITER //

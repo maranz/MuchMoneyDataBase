@@ -21,4 +21,4 @@ insert into MZ_LOG values (
 );
 
 END; //
-DELIMITER ;
+DELIMITER //
