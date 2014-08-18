@@ -1,8 +1,8 @@
-DROP PROCEDURE IF EXISTS MZ_spMONEYOUTi;
+DROP PROCEDURE IF EXISTS MZ_spMONEYi;
 
 DELIMITER //
 
-CREATE PROCEDURE MZ_spMONEYOUTi(
+CREATE PROCEDURE MZ_spMONEYi(
 	inout MONEYID varchar(36),
 	in USERID varchar(36),
 	in GROUPID varchar(36),	
@@ -26,7 +26,7 @@ select "" into ITEMCOSTID;
 select "" into ERR;
 
 if TRIM(IFNULL(USERID, "")) = "" then 
-	select concat(ERR, "$Error: into MZ_MONEYOUTi, USERID is null or empty") into ERR;	
+	select concat(ERR, "$Error: into MZ_MONEYi, USERID is null or empty") into ERR;	
 end if;
 
 /* 
@@ -37,19 +37,19 @@ end if;
 */
 
 if TRIM(IFNULL(ITEMCOSTNAME, "")) = "" then 
-	select concat(ERR, "$nError: into MZ_MONEYOUTi, ITEMCOSTNAME is null or empty") into ERR;	
+	select concat(ERR, "$nError: into MZ_MONEYi, ITEMCOSTNAME is null or empty") into ERR;	
 end if;
 
 if TRIM(IFNULL(APPID, "")) = "" then 
-	select concat(ERR, "$Error: into MZ_MONEYOUTi, APPID is null or empty") into ERR;	
+	select concat(ERR, "$Error: into MZ_MONEYi, APPID is null or empty") into ERR;	
 end if;
 
 if VDATE is null then
-	select concat(ERR, "$Error: into MZ_MONEYOUTi, VDATE is null or empty") into ERR;	
+	select concat(ERR, "$Error: into MZ_MONEYi, VDATE is null or empty") into ERR;	
 end if;
 
 if trim(MONEY) is null then	
-	select concat(ERR, "$Error: into MZ_MONEYOUTi, MONEY is null or empty") into ERR;	
+	select concat(ERR, "$Error: into MZ_MONEYi, MONEY is null or empty") into ERR;	
 end if;
 # End control parameters
 
@@ -58,7 +58,7 @@ if MZ_Debug() then
 	select concat(msg, "\n@ITEMCOSTNAME:= ", ITEMCOSTNAME) into msg;
 	select concat(msg, "\n@APPID:= ", APPID) into msg;
 	select concat(msg, "\n@VDATE:= ", VDATE) into msg;
-	call MZ_spMZ_LOGi ("MZ_MONEYOUTi", msg, null, "i", APPID);
+	call MZ_spMZ_LOGi ("MZ_MONEYi", msg, null, "i", APPID);
 end if;
 
 select "" into @ITEMCOSTID;
@@ -76,16 +76,16 @@ if (select MZ_Debug()) then
 	select "After call MZ_spITEMCOSTi is ok" into msg;
 	select concat(msg, "\n@ITEMCOSTID:= ", @ITEMCOSTID) into msg;	
 	select concat(msg, "\n@ERR1:= ", @ERRITEMCOST) into msg;
-	call MZ_spMZ_LOGi ("\nMZ_MONEYOUTi", msg, null, "i", APPID);
+	call MZ_spMZ_LOGi ("\nMZ_MONEYi", msg, null, "i", APPID);
 end if;
 # End insert ITEMCOST
 
 if MZ_Debug() then	
-	call MZ_spMZ_LOGi ("MZ_MONEYOUTi", "Before controllo esistenza record", null, "i", APPID);
+	call MZ_spMZ_LOGi ("MZ_MONEYi", "Before controllo esistenza record", null, "i", APPID);
 end if;
 
 select count(*) into count
-from MZ_MONEYOUT m
+from MZ_MONEY m
 where m.USERID = USERID
   and m.ITEMCOSTID = @ITEMCOSTID
   and (m.GROUPID is null or m.GROUPID = GROUPID)
@@ -95,17 +95,17 @@ where m.USERID = USERID
 if MZ_Debug() then	
 	select "After controllo esistenza record is ok" into msg;
 	select concat(msg, "\n@COUNT:= ", count) into msg;	
-	call MZ_spMZ_LOGi ("MZ_MONEYOUTi", msg, null, "i", APPID);
+	call MZ_spMZ_LOGi ("MZ_MONEYi", msg, null, "i", APPID);
 end if;
 
 if count = 0 then
 	if MZ_Debug() then		
-		call MZ_spMZ_LOGi ("MZ_MONEYOUTi", "Before insert MZ_MONEYOUT", null, "i", APPID);
+		call MZ_spMZ_LOGi ("MZ_MONEYi", "Before insert MZ_MONEY", null, "i", APPID);
 	end if;
 
-	#select * from MZ_MONEYOUT;
+	#select * from MZ_MONEY;
 	select UUID() into MONEYID;
-	insert into MZ_MONEYOUT value (
+	insert into MZ_MONEY value (
 		 MONEYID
 		,USERID
 		,GROUPID
@@ -115,12 +115,12 @@ if count = 0 then
 		,null
 		,null
 		,MONEY
-		,"MZ_spMONEY_OUTi"
+		,"MZ_spMONEYi"
 		,APPID
 	);
 
 	if MZ_Debug() then	
-		call MZ_spMZ_LOGi ("MZ_MONEYOUTi", "After insert MZ_MONEYOUT is ok", null, "i", APPID);
+		call MZ_spMZ_LOGi ("MZ_MONEYi", "After insert MZ_MONEY is ok", null, "i", APPID);
 	end if;
 else
 	select concat(ERR, "\nError: key duplicate") into ERR;
