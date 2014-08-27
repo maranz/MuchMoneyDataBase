@@ -8,6 +8,7 @@ CREATE PROCEDURE MZ_spMONEYi(
 	in GROUPID varchar(36),
 	inout ITEMCOSTID varchar(36),
 	in ITEMCOSTNAME varchar(255),
+	in CTYPE varchar(1),
 	in VDATE datetime,
 	in MONEY decimal(16,2),
 	in APPID varchar(36),	
@@ -55,7 +56,8 @@ call MZ_spITEMCOSTi(
 	 ITEMCOSTID
 	,ITEMCOSTNAME
 	,APPID 
-	,VDATE 
+	,VDATE
+	,CTYPE
 	,@ERRITEMCOST 
 );
 

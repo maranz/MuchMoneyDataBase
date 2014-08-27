@@ -6,6 +6,7 @@ CREATE PROCEDURE MZ_spITEMCOSTi(
 	in NAME varchar(255), 
 	in APPID varchar(36),
 	in VDATE datetime, #data da utilizzare con DINI e DFIN, al momento predisposta la chiamata ma non utilizzata
+	in CTYPE varchar(1),	
 	out ERR varchar(255)
 )
 BEGIN
@@ -20,6 +21,10 @@ end if;
 if TRIM(IFNULL(APPID, "")) = "" then 
 	select concat(ERR, "$Error APPID is null or empty") into ERR;	
 end if;
+
+if TRIM(IFNULL(CTYPE, "")) = "" then 
+	select concat(ERR, "$Error CTYPE is null or empty") into ERR;	
+end if;
 # End control parameters
 
 if ERR = "" then
@@ -28,6 +33,7 @@ if ERR = "" then
 		from MZ_ITEMCOST c
 		where lower(trim(c.NAME)) = lower(trim(NAME))
 		  and c.APPID = APPID
+		  and c.CTYPE = CTYPE
 		limit 1;	  
 
 		/*
@@ -48,6 +54,7 @@ if ERR = "" then
 				,DFIN
 				,USERAPP
 				,APPID
+				,CTYPE
 			) 				
 			values (
 				ITEMCOSTID
@@ -58,7 +65,8 @@ if ERR = "" then
 				,null
 				,null
 				,"MZ_spITEMCOSTi"
-				,APPID				
+				,APPID	
+				,CTYPE
 			);
 			#select "DEBUG: after insert";
 		#else
