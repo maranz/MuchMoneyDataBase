@@ -5,7 +5,7 @@ DELIMITER //
 CREATE PROCEDURE MZ_spMONEYi(
 	inout MONEYID varchar(36),
 	in USERID varchar(36),
-	in GROUPID varchar(36),
+	in PROJECTID varchar(36),
 	inout ITEMCOSTID varchar(36),
 	in ITEMCOSTNAME varchar(255),
 	in CTYPE varchar(1),
@@ -58,6 +58,8 @@ call MZ_spITEMCOSTi(
 	,APPID 
 	,VDATE
 	,CTYPE
+	,USERID
+	,PROJECTID
 	,@ERRITEMCOST 
 );
 
@@ -77,7 +79,7 @@ select count(*) into count
 from MZ_MONEY m
 where m.USERID = USERID
   and m.ITEMCOSTID = ITEMCOSTID
-  and (m.GROUPID is null or m.GROUPID = GROUPID)
+  and (m.PROJECTID is null or m.PROJECTID = PROJECTID)
   and m.VDATE = VDATE
   and m.MONEY = MONEY;
 
@@ -97,7 +99,7 @@ if count = 0 then
 	insert into MZ_MONEY value (
 		 MONEYID
 		,USERID
-		,GROUPID
+		,PROJECTID
 		,ITEMCOSTID
 		,VDATE
 		,now()

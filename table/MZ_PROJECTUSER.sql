@@ -1,0 +1,17 @@
+/*
+ * Tabella legame Gruppi utenti
+*/ 
+DROP TABLE IF EXISTS MZ_PROJECTUSER;
+
+CREATE TABLE `MZ_PROJECTUSER` (
+  `PROJECTUSERID` varchar(36) NOT NULL,
+  `PROJECTID` varchar(36) NOT NULL,
+  `USERID` varchar(36) NOT NULL,
+  `IDATA` datetime NOT NULL,
+  `UDATE` datetime DEFAULT NULL,
+  `CDATE` datetime DEFAULT NULL,
+  `DINI` datetime DEFAULT NULL,
+  `DFIN` datetime DEFAULT NULL,
+  `USERAPP` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`PROJECTUSERID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
