@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS MZ_CONFIG;
 
 CREATE TABLE `MZ_CONFIG` (
   `CONFIGID` varchar(36) NOT NULL,
+  `USERID` varchar(36) NULL,
   `KEY` varchar(36) NOT NULL,
   `VALUE` varchar(255) NOT NULL,    
   `IDATA` datetime NOT NULL,
