@@ -8,7 +8,7 @@ CREATE PROCEDURE MZ_spPROJECTl (
 BEGIN
 	
 	select 'all'
-	,'Tutti i progetti'
+	,'Riepilogo'
 	union all
 	select p.projectid
 	,p.NAME 
