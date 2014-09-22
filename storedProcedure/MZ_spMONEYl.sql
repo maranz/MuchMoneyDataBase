@@ -54,14 +54,26 @@ BEGIN
 		WHEN 'private' THEN 
 			call MZ_spMONEYl_private (YEAR, APPID);
 			
-			select YEAR, M, MONTH, USERID, USER, sum( MONEYOUT ) MONEYOUT
+			SELECT MAX(M) - 1 INTO MAXM FROM tmpMONEY;	
+			
+			select YEAR, M, MONTH, USERID, USER,  AVATAR, null MONEYIN, sum( MONEYOUT ) MONEYOUT, null DELTA, null PMONEYIN , null PMONEYOUT
+			,CASE M				
+				WHEN MAXM THEN 1
+				ELSE 0
+			 END COLLAPSED
 			from tmpMONEY
-			GROUP BY YEAR, M, MONTH, USERID, USER
+			GROUP BY YEAR, M, MONTH, USERID, USER,  AVATAR
 			order by M desc, USER;			
 	    ELSE  
 			call MZ_spMONEYl_project (YEAR, PROJECTID, APPID);	    
 
-			select YEAR, M, MONTH, USERID, USER, sum( MONEYOUT ) MONEYOUT
+			SELECT MAX(M) - 1 INTO MAXM FROM tmpMONEY;				
+
+			select YEAR, M, MONTH, USERID, USER,  AVATAR, null MONEYIN, sum( MONEYOUT ) MONEYOUT, null DELTA, null PMONEYIN , null PMONEYOUT
+			,CASE M				
+				WHEN MAXM THEN 1
+				ELSE 0
+			END COLLAPSED
 			from tmpMONEY
 			GROUP BY YEAR, M, MONTH, USERID, USER
 			order by M desc, USER;

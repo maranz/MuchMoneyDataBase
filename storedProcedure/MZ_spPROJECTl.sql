@@ -21,7 +21,7 @@ BEGIN
 	where p.cdate is null
 		and p.APPID = APPID
 	union all
-	select 'pers'
+	select 'PRIVATE'
 	,'Personale';
 	
 	
