@@ -10,7 +10,7 @@ CREATE TABLE `MZ_MENU` (
   `SUBTITLE` varchar(255) NOT NULL,    
   `IMG` varchar(25) NOT NULL,    
   `SELECTOR` varchar(25) NOT NULL,
-  `PARAMS` varchar(25) NOT NULL,
+  `PARAMS` varchar(25) NULL,
   `TYPE` varchar(25) NOT NULL,    
   `IDATA` datetime NOT NULL,
   `UDATE` datetime DEFAULT NULL,
@@ -22,4 +22,3 @@ CREATE TABLE `MZ_MENU` (
   `OWNERID` varchar(36)  NULL,
   PRIMARY KEY (`MENUID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
