@@ -10,7 +10,7 @@ CREATE PROCEDURE MZ_spMONEYl (
 BEGIN	
 	declare MAXM int; 
 
-	call MZ_spYERASl ( YEAR );
+	call MZ_spTMPYEARSl ( YEAR );
 	-- SELECT * FROM tmpYEARS;
 	
 	DROP TEMPORARY TABLE IF EXISTS tmpMONEY;	
