@@ -25,9 +25,11 @@ if TRIM(IFNULL(USERID, "")) = "" then
 	select concat(ERR, "$Error USERID is null or empty") into ERR;	
 end if;
 
+/*
 if TRIM(IFNULL(PROJECTID, "")) = "" then 
 	select concat(ERR, "$Error PROJECTID is null or empty") into ERR;	
 end if;
+*/
 
 if TRIM(IFNULL(APPID, "")) = "" then 
 	select concat(ERR, "$Error APPID is null or empty") into ERR;	

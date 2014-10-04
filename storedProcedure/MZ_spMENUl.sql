@@ -11,7 +11,7 @@ BEGIN
 		 , m.IMG, m.SELECTOR
 		 , m.PARAMS
 		 , m.TYPE
-		 , m.OWNERID
+		 , m.PROJECTID
 	from MZ_MENU m
 	where TYPE = 'startmenu'
 	and m.APPID = APPID

@@ -6,10 +6,7 @@ CREATE PROCEDURE MZ_spPROJECTl (
 	   ,in APPID varchar(36)
 )
 BEGIN
-	
-	select 'all'
-	,'Riepilogo'
-	union all
+		
 	select p.projectid
 	,p.NAME 
 	from MZ_PROJECT p

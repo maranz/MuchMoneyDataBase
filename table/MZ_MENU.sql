@@ -19,6 +19,6 @@ CREATE TABLE `MZ_MENU` (
   `DFIN` datetime DEFAULT NULL,
   `USERAPP` varchar(45) DEFAULT NULL,
   `APPID` varchar(36) NOT NULL,
-  `OWNERID` varchar(36)  NULL,
+  `PROJECTID` varchar(36)  NULL,
   PRIMARY KEY (`MENUID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
